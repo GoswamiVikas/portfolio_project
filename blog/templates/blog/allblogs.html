@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Vikas Goswami</title>
+    <title>Vikas' Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -18,14 +18,14 @@
 
     <header>
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Vikas Goswami</a>
+  <a class="navbar-brand" href="{% url 'home' %}">Vikas Goswami</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link" href="#">Twitter</a>
-      <a class="nav-item nav-link" href="#">Resume</a>
+      <a class="nav-item nav-link" href="http://twitter.com/vikasgoswami21">Twitter</a>
+      <a class="nav-item nav-link" href="{% url 'resume' %}">Resume</a>
       <a class="nav-item nav-link active" href="#">Blog</a>
     </div>
   </div>
@@ -39,13 +39,13 @@
         <h2>Latest Blogs</h2>
         <hr>
         {% for blog in blogs.all %}
-        <a href=""><h3>{{ blog.title }}</h3></a>
-        {{blog.pubdate}}
+        <a href="{% url 'detail' blog.id %}"><h4>{{ blog.title }}</h4></a>
+        {{blog.date}}
         <br>
         <img class = "img-fluid" src="{{ blog.image.url }}" height=200 width=200 />
         <br>
         <br>
-        <p style="white-space: pre-line;">{{ blog.body }}</p>
+        <p style="white-space: pre-line;">{{ blog.summary }}</p>
 
         {% endfor %}
 
